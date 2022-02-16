@@ -1,23 +1,25 @@
-import { Container } from './styles'
+import { Container, TransactionTableContainer } from './styles'
+import incomeImg from '../../assets/income.svg'
+import outcomeImg from '../../assets/outcome.svg'
 import closeImg from '../../assets/close.svg'
 import Modal from 'react-modal'
 
-interface NewTransactionModalProps{
+interface NewTransactionModalProps {
     isOpen: boolean;
     onRequestClose: () => void;
 }
 
 
-export const NewTransactionModal = ({ isOpen, onRequestClose}: NewTransactionModalProps) => {
+export const NewTransactionModal = ({ isOpen, onRequestClose }: NewTransactionModalProps) => {
     return (
-        <Modal 
+        <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             overlayClassName="react-modal-overlay"
             className="react-modal-content"
         >
             <button type="button" onClick={onRequestClose}>
-                <img src={closeImg} alt="Fechar modal" className="react-modal-close"/>
+                <img src={closeImg} alt="Fechar modal" className="react-modal-close" />
             </button>
 
             <Container>
@@ -33,6 +35,20 @@ export const NewTransactionModal = ({ isOpen, onRequestClose}: NewTransactionMod
                     placeholder="Valor"
                 />
 
+                <TransactionTableContainer>
+                    <button
+                        type="button"
+                    >
+                        <img src={incomeImg} alt="Entrada" />
+                    </button>
+
+                    <button
+                        type="button"
+                    >
+                        <img src={outcomeImg} alt="Saída" />
+                    </button>
+                </TransactionTableContainer>
+
                 <input
                     placeholder="Categoria"
                 />
@@ -40,8 +56,8 @@ export const NewTransactionModal = ({ isOpen, onRequestClose}: NewTransactionMod
                 <button type="submit">
                     Cadastrar
                 </button>
-            </Container>    
-            
+            </Container>
+
         </Modal>
     )
 }
